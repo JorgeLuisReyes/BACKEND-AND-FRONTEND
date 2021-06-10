@@ -1,0 +1,34 @@
+<!-- PROFESORES -->
+<div class="container">
+    <div class="p-4 shadow-lg mb-3 rounded">
+        <h4 class="text-center">Instructores</h4>
+        <div class="table-responsive">
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="display table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Telefono</th>
+                        <th>Correo</th>
+                        <th>Estatus</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let instructor of instructores;">
+                        <td>{{instructor.id}}</td>                        
+                        <td>{{instructor.nombre}}</td>
+                        <td>{{instructor.apellido}}</td>
+                        <td>{{instructor.telefono}}</td>
+                        <td>{{instructor.email}}</td>
+                        <td>{{instructor.status}}</td>
+                        
+                    </tr>                
+                </tbody>
+            </table>
+            <!--
+            <app-loading [loading]="loading"></app-loading>
+            -->
+        </div>
+    </div>
+</div>

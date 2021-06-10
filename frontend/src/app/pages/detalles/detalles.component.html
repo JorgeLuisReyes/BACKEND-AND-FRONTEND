@@ -1,0 +1,36 @@
+<!-- PERSONAJES -->
+<div class="container">
+    <div class="p-4 shadow-lg mb-3 rounded">
+        <h4 class="text-center">Detalles - Cursos / Instructor</h4>
+        <div class="table-responsive">
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="display table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Sección</th>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha fin</th>
+                        <th>Hora Inicio</th>
+                        <th>Hora fin</th>
+                        <th>Estatus</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let detalle of detalles;">
+                        <td>{{detalle.id}}</td>
+                        <td>{{detalle.seccion}}</td>                        
+                        <td>{{detalle.fechaInicio | date: 'dd/MM/yyyy'}}</td>
+                        <td>{{detalle.fechaFin | date: 'dd/MM/yyyy' }}</td>
+                        <td>{{detalle.horaInicio}}</td>
+                        <td>{{detalle.horaFin}}</td>
+                        <td>{{detalle.status}}</td>                  
+                    </tr>                
+                </tbody>
+            </table>
+            <!--
+            <app-loading [loading]="loading"></app-loading>
+            -->
+        </div>
+    </div>
+</div>
+

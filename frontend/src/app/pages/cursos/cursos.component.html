@@ -1,0 +1,27 @@
+<!-- ESTUDIANTES -->
+<div class="container">
+    <div class="p-4 shadow-lg mb-3 rounded">
+        <h4 class="text-center">Cursos</h4>
+        <div class="table-responsive">
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="display table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>id</th>
+                        <th>Nombre</th>
+                        <th>Estatus</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let curso of cursos;">
+                        <td>{{curso.id}}</td>                                                                                                
+                        <td>{{curso.nombre}}</td>
+                        <td>{{curso.status}}</td>                                                                                                                        
+                    </tr>                
+                </tbody>
+            </table>
+            <!--
+            <app-loading [loading]="loading"></app-loading>
+            -->
+        </div>
+    </div>
+</div>
