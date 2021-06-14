@@ -1,0 +1,50 @@
+<div>
+  <div class="modal-header">
+    <h4 style="font-size: 1.3rem;" class="modal-title">Editar cursos</h4>
+    <button type="button" class="close" class="btn btn-danger" aria-label="Close" (click)="activeModal.close()">
+      <i class="fa fa-times" style="font-size: 20px;"></i>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="formCursos">
+      <div class="form-group row">
+
+        <label class="col-12 col-form-label labelFormat" style="font-size: 16px;">Código</label>
+        <div class="col-12">
+          <input type="text" class="form-control" disabled>
+        </div>
+
+        <label class="col-12 col-form-label labelFormat" style="font-size: 16px;">Nombre curso</label>
+        <div class="col-12">
+          <!--<input type="text" class="form-control" formControlName="nombre" required> -->
+          <input type="text" class="form-control" formControlName="nombre" required [(ngModel)]="nombre">
+          <div *ngIf="formCursos.controls['nombre'].invalid && (formCursos.controls['nombre'].dirty || formCursos.controls['nombre'].touched)">
+            <div *ngIf="formCursos.controls['nombre'].errors.required">
+              <ng-container *ngTemplateOutlet="requerido"></ng-container>
+            </div>
+            <div *ngIf="formCursos.controls['nombre'].errors.pattern">
+              <ng-container *ngTemplateOutlet="formato"></ng-container>
+            </div>
+          </div>
+        </div>
+
+        <label class="col-12 col-form-label labelFormat" style="font-size: 16px;">Estatus</label>
+        <div class="col-12">
+          <input type="text" class="form-control" disabled>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer" style="justify-content: center; text-align: center;">
+    <button  type="button" class='btn btn-primary btn-sm' (click)="saveCursos()" [disabled]="formCursos.invalid">Guardar</button>
+    <button  type="button" class='btn btn-danger btn-sm' (click)="activeModal.close()">Cancelar</button>
+  </div>
+
+  <ng-template #requerido>
+    <span class="text-danger">Este valor es requerido</span>
+  </ng-template>
+  <ng-template #formato>
+    <span class="text-danger">El nombre no debe contener espacios en blanco.</span>
+  </ng-template>
+</div>

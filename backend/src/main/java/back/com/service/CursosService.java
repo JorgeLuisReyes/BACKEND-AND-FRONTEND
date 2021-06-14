@@ -57,7 +57,10 @@ public class CursosService {
 		List<CursosDTO> cursosDTO = new ArrayList<>();
 
         for (Cursos cursos : cursosDB) {
+        	
+        	if(cursos.getStatus() == false) {
         	cursosDTO.add(cursos.getCursosResponseDTO());
+        	}
         }
 
         EndPointCodeResponseEnum enumResult = 
@@ -224,14 +227,16 @@ public class CursosService {
      * @return
      */
     @Transactional
-    public ResponseDTO deleteCursos(CursosDTO cursosDTO) {
+    public ResponseDTO deleteCursos(Long id) {
 
         ResponseDTO responseDTO = new ResponseDTO();
 
-        if (cursosDTO.getId() == null) {
+        Optional<Cursos> cursosDB = cursosRepo.findById(id);
+
+        if (!cursosDB.isPresent()) {
 
             GenericDTO genericDTO = new GenericDTO();
-            genericDTO.setMessage("El id curso no puede ser nulo.");
+            genericDTO.setMessage("El curso no existe.");
 
             EndPointCodeResponseEnum enumResult = EndPointCodeResponseEnum
                     .getByCode(EndPointCodeResponseEnum.C0400.toString());
@@ -245,8 +250,8 @@ public class CursosService {
             
         Cursos cursosUpdate = new Cursos();
 
-        cursosUpdate.setId(cursosDTO.getId());
-        cursosUpdate.setNombre(cursosDTO.getNombre());
+        cursosUpdate.setId(cursosDB.get().getId());
+        cursosUpdate.setNombre(cursosDB.get().getNombre());
         cursosUpdate.setStatus(true);
 
         cursosRepo.save(cursosUpdate);

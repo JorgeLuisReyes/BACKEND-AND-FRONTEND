@@ -71,8 +71,8 @@ public class CursosController {
      * @param cursosDTO
      * @return
      */
-    @DeleteMapping
-    public ResponseDTO delete(@RequestBody @Valid CursosDTO cursosDTO) {    	
-    	return cursosService.deleteCursos(cursosDTO);    
+    @DeleteMapping("/curso/{id}")
+    public ResponseDTO delete(@PathVariable("id") Long id) {    	
+    	return cursosService.deleteCursos(id);    
     }
 }

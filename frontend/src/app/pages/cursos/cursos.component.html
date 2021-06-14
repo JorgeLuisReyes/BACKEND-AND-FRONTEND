@@ -1,7 +1,12 @@
-<!-- ESTUDIANTES -->
 <div class="container">
     <div class="p-4 shadow-lg mb-3 rounded">
         <h4 class="text-center">Cursos</h4>
+        <div class="float-right">
+          <!-- Add button -->
+          <button  (click)="addCurso()" class="btn btn-primary w-20" type="submit">
+            <span translate><i class="fa fa-plus"></i> Add</span>
+          </button>
+        </div>
         <div class="table-responsive">
             <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="display table">
                 <thead class="thead-dark">
@@ -9,19 +14,28 @@
                         <th>id</th>
                         <th>Nombre</th>
                         <th>Estatus</th>
+                        <th>Acción</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let curso of cursos;">
-                        <td>{{curso.id}}</td>                                                                                                
+                        <td>{{curso.id}}</td>
                         <td>{{curso.nombre}}</td>
-                        <td>{{curso.status}}</td>                                                                                                                        
-                    </tr>                
+                        <td>{{curso.status}}</td>
+
+                        <td>
+                          <div class="float">
+                            <button (click)="editCurso(curso)" class="btn btn-success w-20" type="submit">
+                              <span translate><i class="fa fa-plus"></i> Edit</span>
+                            </button>
+                            <button style="margin-left: 5px;" (click)="deleteCurso(curso)" class="btn btn-danger w-20" type="submit">
+                              <span translate><i class="fa fa-plus"></i> Delete</span>
+                            </button>
+                          </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
-            <!--
-            <app-loading [loading]="loading"></app-loading>
-            -->
         </div>
     </div>
 </div>
