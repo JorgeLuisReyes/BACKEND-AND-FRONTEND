@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Cursos } from 'src/app/interfaces/cursos';
 import { CursosService } from 'src/app/services/cursos.service';
 import { swalError, swalSuccessMessage, swalWarning } from 'src/app/shared/config/swalCommon';
@@ -40,8 +40,9 @@ export class CursosAddComponent implements OnInit {
       nombre: this.nombre,
     };
 
-    this.cursosService.createCurso(cursos).then((resp)=>{      
-      if(resp.code == 200) {        
+    this.cursosService.createCurso(cursos).then((resp)=>{ 
+      console.log('resp ', resp );     
+      if(resp.code == 201) {        
         Swal.fire(swalSuccessMessage('Operacion exitosa')).then(() => {
           this.activeModal.close();
           window.location.reload();

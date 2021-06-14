@@ -50,7 +50,9 @@ export class CursosComponent {
 
   editCurso(curso: Cursos) {
     const modalRef = this.modalEdit.open(CursosEditComponent);
-    
+    modalRef.componentInstance.id = curso.id;
+    modalRef.componentInstance.nombre = curso.nombre;
+    modalRef.componentInstance.status = curso.status;
   }
 
   deleteCurso(curso: Cursos) {

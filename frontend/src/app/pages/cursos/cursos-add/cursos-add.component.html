@@ -16,9 +16,6 @@
             <div *ngIf="formCursos.controls['nombre'].errors.required">
               <ng-container *ngTemplateOutlet="requerido"></ng-container>
             </div>
-            <div *ngIf="formCursos.controls['nombre'].errors.pattern">
-              <ng-container *ngTemplateOutlet="formato"></ng-container>
-            </div>
           </div>
         </div>
       </div>

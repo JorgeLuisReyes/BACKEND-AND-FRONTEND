@@ -28,8 +28,11 @@ export class CursosEditComponent implements OnInit {
   ) {
 
     this.formCursos = new FormGroup({
-      nombre: new FormControl()
+      id: new FormControl(),
+      nombre: new FormControl(),
+      status: new FormControl()
     });
+
    }
 
   ngOnInit() {
@@ -43,8 +46,9 @@ export class CursosEditComponent implements OnInit {
       status: this.status
     };
 
-    this.cursosService.createCurso(cursos).then((resp)=>{      
-      if(resp.code == 200) {        
+    this.cursosService.updateCurso(cursos).then((resp)=>{      
+      if(resp.code == 202) {
+        console.log('resp ', resp );        
         Swal.fire(swalSuccessMessage('Operacion exitosa')).then(() => {
           this.activeModal.close();
           window.location.reload();
