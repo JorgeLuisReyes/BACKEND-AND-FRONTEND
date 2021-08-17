@@ -19,4 +19,8 @@ export class CursosService {
 
   deleteCurso = (curso: Cursos) => this.http.delete<void>(`${URL_SERVICIOS}cursos/curso/${curso.id}`).toPromise();
 
+  /**
+   * comentario de demostracion git
+   */
+
 }
